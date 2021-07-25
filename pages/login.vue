@@ -32,7 +32,6 @@
 <script>
     export default {
       name: "Login",
-      auth: false,
       data() {
         return {
           ruleForm: {
@@ -54,7 +53,9 @@
         submitForm(formName) {
           this.$refs[formName].validate((valid) => {
             if (valid) {
-              alert('submit')
+              this.$store.dispatch('user/login', {
+                ...this.ruleForm
+              })
             }
           })
         }

@@ -30,7 +30,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    'remixicon/fonts/remixicon.css'
   ],
 
   router: {
@@ -55,20 +56,11 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/axios'
   ],
 
   axios: {
     base_url: 'http://127.0.0.1:8000'
-  },
-
-  auth: {
-    strategies: {
-      customStrategy: {
-        scheme: '~/schemes/UserScheme.js'
-      }
-    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

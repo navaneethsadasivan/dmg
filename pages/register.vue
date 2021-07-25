@@ -31,7 +31,6 @@
 <script>
     export default {
       name: "Register",
-      auth: false,
       data() {
         return {
           ruleForm: {
@@ -51,16 +50,13 @@
       },
       methods: {
         submitForm(formName) {
-          try {
-            const response = this.$auth.setStrategy('customStrategy').then(() => {
-              this.$auth.registerUser(this.ruleForm)
-            })
-            // eslint-disable-next-line no-console
-            console.log(response)
-          } catch (e) {
-            // eslint-disable-next-line no-console
-            console.log(e)
-          }
+          this.$refs[formName].validate((valid) => {
+            if (valid) {
+              this.$store.dispatch('user/register', {
+                ...this.ruleForm
+              })
+            }
+          })
         }
       }
     }
