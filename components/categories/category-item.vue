@@ -1,9 +1,11 @@
 <template>
-  <el-row type="flex">
-    <el-col>
-      {{ name }}
-    </el-col>
-  </el-row>
+  <div class="categoryItem">
+    <el-row type="flex">
+      <el-col>
+        {{ name }}
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -19,5 +21,7 @@
 </script>
 
 <style scoped>
-
+  .categoryItem {
+    padding: 2%;
+  }
 </style>

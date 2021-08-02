@@ -3,17 +3,17 @@
     <info-card
       title="Products"
       icon="ri-store-fill"
-      :details="productDetails"
+      :details="productInfo"
     />
     <info-card
       title="Categories"
       icon="ri-file-copy-line"
-      :details="productDetails"
+      :details="categoryInfo"
     />
     <info-card
       title="Orders"
-      icon="ri-shopping-basket-line"
-      :details="productDetails"
+      icon="ri-archive-line"
+      :details="orderInfo"
     />
     <info-card
       title="[Beta Test]"
@@ -24,24 +24,36 @@
 </template>
 
 <script>
-import InfoCard from "../components/home/info-card";
-export default {
-  components: {InfoCard},
-  layout: 'app',
-  data() {
-    return {
-      productDetails: [
-        {name: 'Total', value: 20},
-        {name: 'Active', value: 17}
-      ]
+  import { mapGetters } from 'vuex'
+  import InfoCard from "../components/home/info-card";
+  export default {
+    components: {InfoCard},
+    layout: 'app',
+    data() {
+      return {
+        productDetails: {
+          featuredName: 'Active',
+          featuredValue: 20,
+          additionalDetails: [
+            {name: 'Total', value: '50'}
+          ]
+        }
+      }
+    },
+    computed: {
+      ...mapGetters ({
+        productInfo: 'product/getProductsInfo',
+        categoryInfo: 'category/getCategoryInfo',
+        orderInfo: 'order/getOrdersInfo'
+      })
     }
   }
-}
 </script>
 
 <style>
   .infoBoxes {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
 </style>

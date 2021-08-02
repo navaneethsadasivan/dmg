@@ -1,17 +1,19 @@
 <template>
   <el-card shadow="always">
-    <div class="header">
-      <h2>{{title}}</h2>
+    <div style="display:flex; justify-content:space-around">
+      <div class="header">
+        <h3>{{title}}</h3>
+      </div>
+      <div class="icon">
+        <i :class="icon" class="ri-2x"/>
+      </div>
     </div>
     <el-divider/>
-    <div>
-      <div class="icon">
-        <i :class="icon" class="ri-4x"></i>
-      </div>
-      <el-divider/>
-      <div v-for="detail in details" :key="detail.name" class="details">
-        <div style="display: flex">
-          <span>{{detail.name}} : </span>
+    <div class="details">
+      <h1>{{ details.featuredValue }}</h1>
+      <div v-for="detail in details.additionalDetails" :key="detail.name" style="width:50%">
+        <div style="display: flex; justify-content: space-between">
+          <span>{{detail.name}}</span>
           <span>{{detail.value}}</span>
         </div>
       </div>
@@ -32,8 +34,8 @@
           default: ''
         },
         details: {
-          type: Array,
-          default: () => []
+          type: Object,
+          default: () => {}
         }
       }
     }
@@ -45,19 +47,15 @@
     margin: 2%;
   }
   .el-divider {
-    margin: 0 0 10% 0;
+    margin: 0 0 1% 0;
   }
-  .header {
-    padding: 1%;
-    text-align: center;
+  .details {
+    margin-left: 10%;
   }
   .icon {
     padding: 1%;
     display: flex;
     justify-content: center;
-  }
-  .details {
-    display: flex;
-    justify-content: center;
+    align-items: center;
   }
 </style>

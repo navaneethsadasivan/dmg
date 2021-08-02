@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="itemButton">
-            <el-button type="success" plain>
+            <el-button type="success" plain @click="addToBasket(product)">
               <i class="ri-shopping-basket-line"></i>
               <span>Add to Basket</span>
             </el-button>
@@ -113,6 +113,18 @@
       methods: {
         toggle(props) {
           this.$store.dispatch('product/changeStatus', props)
+        },
+        addToBasket(product) {
+          const basketItem = {
+            name: product.name,
+            price: product.price,
+            quantity: 1
+          }
+          this.$store.dispatch('basket/addToBasket', basketItem)
+          this.$message({
+            message: 'Added to basket',
+            type: 'success'
+          })
         },
         submit(formName, props) {
           this.$refs[formName].validate((valid) => {

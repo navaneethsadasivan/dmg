@@ -1,7 +1,11 @@
 <template>
   <div class="categoryPage">
-    <category-list/>
-    <category-add/>
+    <div style="width:65%; margin-right: 5%">
+      <category-list/>
+    </div>
+    <div style="width: 30%">
+      <category-add/>
+    </div>
   </div>
 </template>
 

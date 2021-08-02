@@ -10,6 +10,9 @@
             <el-form-item label="Category" prop="name">
               <el-input v-model="categoryAddForm.name"/>
             </el-form-item>
+            <el-form-item label="Description" prop="description">
+              <el-input v-model="categoryAddForm.description" type="textarea"/>
+            </el-form-item>
             <el-form-item>
               <el-button type="success" plain @click="submitCategoryForm('categoryAddForm')">Submit</el-button>
             </el-form-item>
@@ -22,8 +25,8 @@
                 <el-option
                   v-for="(category,index) in categories"
                   :key="index"
-                  :label="category.categoryName"
-                  :value="category.categoryName"
+                  :label="category.name"
+                  :value="category.name"
                 ></el-option>
               </el-select>
             </el-form-item>
@@ -48,7 +51,8 @@
       data() {
         return {
           categoryAddForm: {
-            name: ''
+            name: '',
+            description: ''
           },
           categoryItemAddForm: {
             category: '',
@@ -57,6 +61,9 @@
           addRules: {
             name: [
               {required: true, message:'Please enter category', trigger:'blur'}
+            ],
+            description: [
+              {required: true, message:'Please enter description', trigger:'blur'}
             ]
           },
           addItemRules: {
@@ -81,6 +88,7 @@
             if (valid) {
               const payload = {
                 name: this.categoryAddForm.name,
+                description: this.categoryAddForm.description,
                 items: []
               }
               this.$store.dispatch('category/addNewCategory', payload)
@@ -108,9 +116,6 @@
 </script>
 
 <style scoped>
-  .el-card {
-    width: 450px;
-  }
   .el-collapse {
     border-top: 0;
   }

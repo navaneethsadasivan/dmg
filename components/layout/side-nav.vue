@@ -35,7 +35,8 @@
           pages: [
             {path: '/', name: 'Home', icon: 'ri-home-2-line'},
             {path: '/products', name: 'Products', icon: 'ri-store-fill'},
-            {path: '/categories', name: 'Categories', icon: 'ri-file-copy-line'}
+            {path: '/categories', name: 'Categories', icon: 'ri-file-copy-line'},
+            {path: '/orders', name: 'Orders', icon: 'ri-archive-line'}
           ]
         }
       },
